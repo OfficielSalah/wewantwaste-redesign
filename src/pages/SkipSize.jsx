@@ -2,8 +2,9 @@ import StepperComp from "../components/Stepper";
 import SkipCard from "../components/SkipCard";
 import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function SkipSize() {
   const [skips, setSkips] = useState([]);
+  const [selectedSkip, setSelectedSkip] = useState(null);
 
   useEffect(() => {
     fetch(
@@ -28,9 +29,14 @@ export default function Home() {
           Select the skip size that best suits your needs
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-6 mb-40">
         {skips.map((skip) => (
-          <SkipCard key={skip.id} skip={skip} />
+          <SkipCard
+            key={skip.id}
+            skip={skip}
+            onSelect={setSelectedSkip}
+            selectedSkip={selectedSkip}
+          />
         ))}
       </div>
     </div>
