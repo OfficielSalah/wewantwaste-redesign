@@ -51,7 +51,7 @@ const ColorConnector = styled(StepConnector)(({ theme }) => ({
   [`& .${stepConnectorClasses.line}`]: {
     height: 3,
     border: 0,
-    backgroundColor: "var(--tw-border-color, #e5e7eb)", // Fallback to light if not overridden
+    backgroundColor: "var(--tw-border-color, #e5e7eb)",
     borderRadius: 1,
   },
 }));
