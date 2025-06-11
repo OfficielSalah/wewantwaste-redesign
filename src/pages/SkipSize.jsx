@@ -1,5 +1,6 @@
 import StepperComp from "../components/Stepper";
 import SkipCard from "../components/SkipCard";
+import ThemeToggle from "../components/ThemeToggle";
 import { useEffect, useState } from "react";
 
 export default function SkipSize() {
@@ -19,13 +20,14 @@ export default function SkipSize() {
   }, []);
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-4 py-8">
+    <div className="max-w-screen-2xl mx-auto px-4 py-8 transition-colors duration-300 min-h-screen">
+      <ThemeToggle />
       <StepperComp />
       <div className="text-center mt-12 mb-8">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">
           Choose Your Skip Size
         </h1>
-        <p className="text-base sm:text-lg text-gray-600">
+        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300">
           Select the skip size that best suits your needs
         </p>
       </div>

@@ -7,12 +7,14 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import clsx from "clsx";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import DeleteIcon from "@mui/icons-material/Delete";
-import InventoryIcon from "@mui/icons-material/Inventory";
-import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
-import EventIcon from "@mui/icons-material/Event";
-import PaymentIcon from "@mui/icons-material/Payment";
+import {
+  LocationOn as LocationOnIcon,
+  Delete as DeleteIcon,
+  Inventory as InventoryIcon,
+  LocalPolice as LocalPoliceIcon,
+  Event as EventIcon,
+  Payment as PaymentIcon,
+} from "@mui/icons-material";
 
 const stepIcons = {
   1: <LocationOnIcon fontSize="small" />,
@@ -49,7 +51,7 @@ const ColorConnector = styled(StepConnector)(({ theme }) => ({
   [`& .${stepConnectorClasses.line}`]: {
     height: 3,
     border: 0,
-    backgroundColor: "#e5e7eb",
+    backgroundColor: "var(--tw-border-color, #e5e7eb)", // Fallback to light if not overridden
     borderRadius: 1,
   },
 }));
@@ -61,12 +63,14 @@ function StepIconComponent(props) {
   return (
     <div
       className={clsx(
-        "w-8 h-8 flex items-center justify-center rounded-full",
+        "w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300",
         className,
         {
           "bg-green-500 text-white": completed,
-          "bg-green-100 text-green-600 border border-green-500": active,
-          "bg-gray-300 text-gray-700": !active && !completed,
+          "bg-green-100 text-green-600 border border-green-500 dark:bg-green-700 dark:text-white":
+            active,
+          "bg-gray-300 text-gray-700 dark:bg-gray-600 dark:text-gray-200":
+            !active && !completed,
         }
       )}
     >
@@ -77,13 +81,15 @@ function StepIconComponent(props) {
 
 export default function StepperComp() {
   return (
-    <div className="bg-white py-6 px-4 rounded-lg shadow-md overflow-x-auto">
+    <div className="bg-white dark:bg-gray-800 py-6 px-4 rounded-lg shadow-md overflow-x-auto transition-colors duration-300">
       <div className="min-w-[600px] sm:min-w-0">
         <Stepper alternativeLabel activeStep={2} connector={<ColorConnector />}>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel StepIconComponent={StepIconComponent}>
-                <span className="text-sm">{label}</span>
+                <span className="text-sm text-gray-800 dark:text-gray-100">
+                  {label}
+                </span>
               </StepLabel>
             </Step>
           ))}
