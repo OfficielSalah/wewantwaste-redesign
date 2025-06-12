@@ -79,11 +79,15 @@ function StepIconComponent(props) {
   );
 }
 
-export default function StepperComp() {
+export default function StepperComp({ activeStep }) {
   return (
     <div className="bg-white dark:bg-gray-800 py-6 px-4 rounded-lg shadow-md overflow-x-auto transition-colors duration-300">
       <div className="min-w-[600px] sm:min-w-0">
-        <Stepper alternativeLabel activeStep={2} connector={<ColorConnector />}>
+        <Stepper
+          alternativeLabel
+          activeStep={activeStep}
+          connector={<ColorConnector />}
+        >
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel StepIconComponent={StepIconComponent}>

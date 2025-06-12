@@ -63,47 +63,6 @@ export default function SkipCard({ skip, onSelect, selectedSkip }) {
       >
         {isSelected ? "Selected" : "Select this skip"}
       </button>
-
-      {selectedSkip && (
-        <div className="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 border-t dark:border-gray-700 z-50 shadow-xl">
-          <div className="bg-gray-50 dark:bg-gray-800 text-[13px] text-gray-600 dark:text-gray-300 text-center px-4 py-2 border-b dark:border-gray-700">
-            Imagery and information shown throughout this website may not
-            reflect the exact shape or size specification. Colours may vary.
-            Options and/or accessories may be featured at additional cost.
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-center justify-between px-4 py-3 gap-4">
-            <div className="text-md font-medium text-gray-800 dark:text-gray-100 text-center md:text-left">
-              You’ve selected a{" "}
-              <span className="text-green-600 dark:text-green-400 font-semibold">
-                {selectedSkip.size} Yard Skip
-              </span>{" "}
-              —
-              <span className="ml-1">
-                £{selectedSkip.price_before_vat} for{" "}
-                {selectedSkip.hire_period_days} day hire
-              </span>
-            </div>
-
-            <div className="flex justify-center md:justify-end gap-2">
-              <button
-                onClick={() => onSelect(null)}
-                className="px-4 py-2 text-xl rounded border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-              >
-                Back
-              </button>
-              <button
-                onClick={() => {
-                  alert("Continue to next step");
-                }}
-                className="px-4 py-2 text-xl rounded bg-green-600 text-white hover:bg-green-700 transition"
-              >
-                Continue
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
